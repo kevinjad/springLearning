@@ -1,9 +1,6 @@
 package com.kevinjad.springLearning.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Book {
@@ -11,6 +8,8 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Author author;
 
     public Book(Long id, String name) {
         this.id = id;
